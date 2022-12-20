@@ -27,15 +27,15 @@ Then run this code with `node 3.todo`
 
 const {sum, subtract} = require('./math')
 
-let result, expected
-
-result = sum(3, 7)
-expected = 10
-expect(result).toBe(expected)
-
-result = subtract(7, 3)
-expected = 4
-expect(result).toBe(expected)
+const test = (testTitle, callback) => {
+  try {
+    callback()
+    console.log(`✓ ${testTitle}`)
+  } catch (error) {
+    console.error(`✕ ${testTitle}`)
+    console.error(error)
+  }
+}
 
 function expect(actual) {
   return {
@@ -46,3 +46,13 @@ function expect(actual) {
     },
   }
 }
+
+let result, expected
+
+result = sum(3, 7)
+expected = 10
+expect(result).toBe(expected)
+
+result = subtract(7, 3)
+expected = 4
+expect(result).toBe(expected)
